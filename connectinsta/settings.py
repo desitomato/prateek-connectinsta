@@ -169,8 +169,8 @@ REST_FRAMEWORK = {
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_SSl = True
-EMAIL_HOST = 'connectinsta.com'
-EMAIL_PORT = 465
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
+EMAIL_PORT = 587
 EMAIL_HOST_USER = 'prateek@connectinsta.com'
 EMAIL_HOST_PASSWORD = 'prateek@connectinsta'
