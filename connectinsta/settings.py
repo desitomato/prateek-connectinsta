@@ -25,7 +25,7 @@ SECRET_KEY = 'ak%pji+7zu5+kn^+6*t+*juzt^#zhteh%3va051a93e2!^-dv$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-54-226-86-101.compute-1.amazonaws.com','54.226.86.101', '127.0.0.1']
+ALLOWED_HOSTS = ['ec2-54-226-86-101.compute-1.amazonaws.com','54.226.86.101', '127.0.0.1', 'connectinsta.com']
 
 
 # Application definition
