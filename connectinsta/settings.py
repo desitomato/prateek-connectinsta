@@ -172,5 +172,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'AKIAJFJOGNNVSTYTBKWQ'
-EMAIL_HOST_PASSWORD = 'prateek@connectinsta'
+EMAIL_HOST_USER = 'AKIAI2AQQSPXLRMHRJ6Q'
+EMAIL_HOST_PASSWORD = 'Asma+zRk2mq4/vMvbGs98v1WtvJUMo/dOh3HNEKIg3rP'
