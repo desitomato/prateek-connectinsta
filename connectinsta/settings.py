@@ -25,7 +25,7 @@ SECRET_KEY = 'ak%pji+7zu5+kn^+6*t+*juzt^#zhteh%3va051a93e2!^-dv$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-54-226-86-101.compute-1.amazonaws.com','54.226.86.101', '127.0.0.1', 'www.connectinsta.com']
+ALLOWED_HOSTS = ['ec2-54-226-86-101.compute-1.amazonaws.com','54.226.86.101', '127.0.0.1', 'www.connectinsta.com', 'connectinsta.com']
 
 
 # Application definition
@@ -169,8 +169,8 @@ REST_FRAMEWORK = {
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'md-in-13.webhostbox.net'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'AKIAI2AQQSPXLRMHRJ6Q'
-EMAIL_HOST_PASSWORD = 'Asma+zRk2mq4/vMvbGs98v1WtvJUMo/dOh3HNEKIg3rP'
+EMAIL_HOST_USER = 'prateek@genesiseventsindia.in'
+EMAIL_HOST_PASSWORD = 'Genesis@prateek'
