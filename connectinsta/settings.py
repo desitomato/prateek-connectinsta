@@ -168,9 +168,9 @@ REST_FRAMEWORK = {
 }
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 EMAIL_USE_SSL = True
-EMAIL_HOST = 'md-in-13.webhostbox.net'
+EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'prateek@genesiseventsindia.in'
-EMAIL_HOST_PASSWORD = 'Genesis@prateek'
+EMAIL_HOST_USER = 'AKIAJCTXYZCI6OEXHU6Q'
+EMAIL_HOST_PASSWORD = 'AtwF/z/+4N+3knkMQHYcPzryn/cui8aHGPfCgBgW7xqP'
