@@ -117,7 +117,7 @@ def create_event(request, trainer_id):
             return render(request, 'trainer/create_event.html', context)
 
         event.save()
-        send_mail('Connectinsta - New Event Created', 'congratulations', 'prateek@genesiseventsindia.in', [event_email], fail_silently=False)
+        send_mail('Connectinsta - New Event Created', 'congratulations', 'er.prateek.9045@gmail.com', [event_email], fail_silently=False)
         return render(request, 'trainer/details.html', {'trainer': trainer})
     context = {
         'trainer': trainer,
@@ -157,7 +157,7 @@ def create_webinar(request, trainer_id):
             return render(request, 'trainer/create_webinar.html', context)
 
         webinar.save()
-        send_mail('Connectinsta - New Webinar Created', 'congratulations', 'prateek@genesiseventsindia.in', [webinar_email], fail_silently=False)
+        send_mail('Connectinsta - New Webinar Created', 'congratulations', 'er.prateek.9045@gmail.com', [webinar_email], fail_silently=False)
         return render(request, 'trainer/details.html', {'trainer': trainer})
     context = {
         'trainer': trainer,
@@ -196,7 +196,7 @@ def create_article(request, trainer_id):
             return render(request, 'trainer/create_article.html', context)
 
         article.save()
-        send_mail('Connectinsta - New Article Created', 'congratulations', 'prateek@genesiseventsindia.in', [article_email], fail_silently=False)
+        send_mail('Connectinsta - New Article Created', 'congratulations', 'er.prateek.9045@gmail.com', [article_email], fail_silently=False)
         return render(request, 'trainer/details.html', {'trainer': trainer})
     context = {
         'trainer': trainer,
@@ -236,7 +236,7 @@ def create_elearning(request, trainer_id):
             return render(request, 'trainer/create_elearning.html', context)
 
         elearning.save()
-        send_mail('Connectinsta - New Elearning Program Created', 'congratulations', 'prateek@genesiseventsindia.in', [elearning_email], fail_silently=False)
+        send_mail('Connectinsta - New Elearning Program Created', 'congratulations', 'er.prateek.9045@gmail.com', [elearning_email], fail_silently=False)
         return render(request, 'trainer/details.html', {'trainer': trainer})
     context = {
         'trainer': trainer,
@@ -275,7 +275,7 @@ def create_olocation(request, trainer_id):
             return render(request, 'trainer/create_olocation.html', context)
 
         olocation.save()
-        send_mail('Connectinsta - New Outbound Location Created', 'congratulations', 'prateek@genesiseventsindia.in', [olocation_email], fail_silently=False)
+        send_mail('Connectinsta - New Outbound Location Created', 'congratulations', 'er.prateek.9045@gmail.com', [olocation_email], fail_silently=False)
         return render(request, 'trainer/details.html', {'trainer': trainer})
     context = {
         'trainer': trainer,
