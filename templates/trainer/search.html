@@ -1,0 +1,241 @@
+{% extends 'trainer/base.html' %}
+
+{% block body %}
+    <div class="container-fluid events-container">
+
+    <div class="row">
+    <div class="col-sm-12">
+         {% if events %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Events</h3>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Event Title</th>
+                                    <th>Trainer Name</th>
+                                    <th>File</th>
+                                    <th>Trainer</th>
+                                    <th>Favorite</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for event in events %}
+                                    <tr>
+                                        <td>{{ event.etitle }}</td>
+                                        <td>{{ event.trainer.name }}</td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'trainer:details' event.trainer.id %}">
+                                                <img src="{{ event.trainer.picture.url }}" class="img-responsive" style="width: 20px; float: left; margin-right: 10px;" />
+                                            </a>
+                                            <a href="{% url 'trainer:details' event.trainer.id %}">{{ event.trainer.name }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'trainer:favorite' event.id %}" class="btn-favorite"><span class="glyphicon glyphicon-star {% if event.is_favorite %}active{% endif %}"></span></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+
+    {% if webinars %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Webinars</h3>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Webinar Title</th>
+                                    <th>Trainer Name</th>
+                                    <th>File</th>
+                                    <th>Trainer</th>
+                                    <th>Favorite</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for webinar in webinars %}
+                                    <tr>
+                                        <td>{{ webinar.wtitle }}</td>
+                                        <td>{{ webinar.trainer.name }}</td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'trainer:details' webinar.trainer.id %}">
+                                                <img src="{{ webinar.trainer.picture.url }}" class="img-responsive" style="width: 20px; float: left; margin-right: 10px;" />
+                                            </a>
+                                            <a href="{% url 'trainer:details' webinar.trainer.id %}">{{ webinar.trainer.name }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'trainer:favorite_webinar' webinar.id %}" class="btn-favorite"><span class="glyphicon glyphicon-star {% if webinar.is_favorite %}active{% endif %}"></span></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    {% if articles %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Articles</h3>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Article Title</th>
+                                    <th>Trainer Name</th>
+                                    <th>File</th>
+                                    <th>Trainer</th>
+                                    <th>Favorite</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for article in articles %}
+                                    <tr>
+                                        <td>{{ article.atitle }}</td>
+                                        <td>{{ article.trainer.name }}</td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'trainer:details' article.trainer.id %}">
+                                                <img src="{{ article.trainer.picture.url }}" class="img-responsive" style="width: 20px; float: left; margin-right: 10px;" />
+                                            </a>
+                                            <a href="{% url 'trainer:details' article.trainer.id %}">{{ article.trainer.name }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'trainer:favorite_article' article.id %}" class="btn-favorite"><span class="glyphicon glyphicon-star {% if article.is_favorite %}active{% endif %}"></span></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    {% if elearnings %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>E-Learnings</h3>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>E-Learning Title</th>
+                                    <th>Trainer Name</th>
+                                    <th>File</th>
+                                    <th>Trainer</th>
+                                    <th>Favorite</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for elearning in elearnings %}
+                                    <tr>
+                                        <td>{{ elearning.ltitle }}</td>
+                                        <td>{{ elearning.trainer.name }}</td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'trainer:details' elearning.trainer.id %}">
+                                                <img src="{{ elearning.trainer.picture.url }}" class="img-responsive" style="width: 20px; float: left; margin-right: 10px;" />
+                                            </a>
+                                            <a href="{% url 'trainer:details' elearning.trainer.id %}">{{ elearning.trainer.name }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'trainer:favorite_elearning' elearning.id %}" class="btn-favorite"><span class="glyphicon glyphicon-star {% if elearning.is_favorite %}active{% endif %}"></span></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+
+    {% if olocations %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Outbound Locations</h3>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Location Title</th>
+                                    <th>Trainer Name</th>
+                                    <th>File</th>
+                                    <th>Trainer</th>
+                                    <th>Favorite</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for olocation in olocations %}
+                                    <tr>
+                                        <td>{{ olocation.otitle }}</td>
+                                        <td>{{ olocation.trainer.name }}</td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'trainer:details' olocation.trainer.id %}">
+                                                <img src="{{ olocation.trainer.picture.url }}" class="img-responsive" style="width: 20px; float: left; margin-right: 10px;" />
+                                            </a>
+                                            <a href="{% url 'trainer:details' olocation.trainer.id %}">{{ olocation.trainer.name }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'trainer:favorite' olocation.id %}" class="btn-favorite"><span class="glyphicon glyphicon-star {% if olocation.is_favorite %}active{% endif %}"></span></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+    </div>
+    </div>
+{% endblock %}
