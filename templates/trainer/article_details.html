@@ -5,7 +5,7 @@
     <div class="row">
 
         <!-- Left Album Info -->
-        <div class="col-sm-4 col-md-3">
+        <div class="col-lg-6 col-sm-offset-3">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="{% url 'trainer:adetails' trainer.id article.id %}">
@@ -19,22 +19,14 @@
                     <h2>{{ article.alocation }}</h2>
                 </div>
             </div>
+        <p>
+            <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+        </p>
+        <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
         </div>
 
         <!-- Right Song Info -->
-        <div class="col-sm-8 col-md-9">
 
-
-
-
-
-
-
-
-
-
-
-            </div>
 
         </div>
 

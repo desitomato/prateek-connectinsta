@@ -4,11 +4,12 @@ from django.views.generic import DetailView, TemplateView
 from hitcount.views import HitCountDetailView
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.contrib import messages
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from django.shortcuts import render, render_to_response
 from django.views.decorators.csrf import requires_csrf_token
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseRedirect, Http404
 from django.template.loader import get_template
 from django.template import Context, Template,RequestContext
 from django.template.loader import render_to_string
@@ -49,7 +50,10 @@ def create_trainer(request):
                 }
                 return render(request, 'trainer/create_trainer.html', context)
             trainer.save()
+            messages.success(request, "Successfully created trainer")
             return render(request, 'trainer/details.html', {'trainer': trainer})
+        else:
+            messages.error(request, "Not Successfully updated")
         context = {
             'form': form,
         }
@@ -80,7 +84,10 @@ def create_client(request):
 
                 return render(request, 'trainer/create_client.html', context)
             client.save()
+            messages.success(request, "Successfully created client")
             return render(request, 'trainer/client_details.html', {'client': client})
+        else:
+            messages.error(request, "Not Successfully updated")
         context = {
             'form': form,
         }
@@ -117,8 +124,11 @@ def create_event(request, trainer_id):
             return render(request, 'trainer/create_event.html', context)
 
         event.save()
+        messages.success(request, "Successfully created event")
         send_mail('Connectinsta - New Event Created', 'congratulations', 'er.prateek.9045@gmail.com', [event_email], fail_silently=False)
         return render(request, 'trainer/details.html', {'trainer': trainer})
+    else:
+        messages.error(request, "Not Successfully updated")
     context = {
         'trainer': trainer,
         'form': form,
@@ -157,8 +167,11 @@ def create_webinar(request, trainer_id):
             return render(request, 'trainer/create_webinar.html', context)
 
         webinar.save()
+        messages.success(request, "Successfully created webinar")
         send_mail('Connectinsta - New Webinar Created', 'congratulations', 'er.prateek.9045@gmail.com', [webinar_email], fail_silently=False)
         return render(request, 'trainer/details.html', {'trainer': trainer})
+    else:
+        messages.error(request, "Not Successfully updated")
     context = {
         'trainer': trainer,
         'form': form,
@@ -196,8 +209,11 @@ def create_article(request, trainer_id):
             return render(request, 'trainer/create_article.html', context)
 
         article.save()
+        messages.success(request, "Successfully created article")
         send_mail('Connectinsta - New Article Created', 'congratulations', 'er.prateek.9045@gmail.com', [article_email], fail_silently=False)
         return render(request, 'trainer/details.html', {'trainer': trainer})
+    else:
+        messages.error(request, "Not Successfully updated")
     context = {
         'trainer': trainer,
         'form': form,
@@ -236,8 +252,11 @@ def create_elearning(request, trainer_id):
             return render(request, 'trainer/create_elearning.html', context)
 
         elearning.save()
+        messages.success(request, "Successfully created elearning")
         send_mail('Connectinsta - New Elearning Program Created', 'congratulations', 'er.prateek.9045@gmail.com', [elearning_email], fail_silently=False)
         return render(request, 'trainer/details.html', {'trainer': trainer})
+    else:
+        messages.error(request, "Not Successfully updated")
     context = {
         'trainer': trainer,
         'form': form,
@@ -275,8 +294,11 @@ def create_olocation(request, trainer_id):
             return render(request, 'trainer/create_olocation.html', context)
 
         olocation.save()
+        messages.success(request, "Successfully created outbound location")
         send_mail('Connectinsta - New Outbound Location Created', 'congratulations', 'er.prateek.9045@gmail.com', [olocation_email], fail_silently=False)
         return render(request, 'trainer/details.html', {'trainer': trainer})
+    else:
+        messages.error(request, "Not Successfully updated")
     context = {
         'trainer': trainer,
         'form': form,
@@ -524,25 +546,49 @@ def index(request):
     else:
         trainers = Trainer.objects.filter(user=request.user)
         clients = Client.objects.filter(user=request.user)
+
+        return render(request, 'trainer/index.html', {'trainers': trainers, 'clients': clients})
+
+
+def searchview(request):
+    if not request.user.is_authenticated():
+        return render(request, 'account/login.html')
+    else:
+
         event_results = Event.objects.all()
+        webinar_results = Webinar.objects.all()
+        article_results = Article.objects.all()
+        elearning_results = Elearning.objects.all()
+        olocation_results = Olocation.objects.all()
         query = request.GET.get("q")
         if query:
-            trainers = trainers.filter(
-                Q(name__icontains=query) |
-                Q(designation__icontains=query)
-            ).distinct()
+
             event_results = event_results.filter(
                 Q(etitle__icontains=query)
             ).distinct()
-            return render(request, 'trainer/index.html', {
-                'trainers': trainers,
+            webinar_results = webinar_results.filter(
+                Q(wtitle__icontains=query)
+            ).distinct()
+            article_results = article_results.filter(
+                Q(atitle__icontains=query)
+            ).distinct()
+            elearning_results = elearning_results.filter(
+                Q(ltitle__icontains=query)
+            ).distinct()
+            olocation_results = olocation_results.filter(
+                Q(otitle__icontains=query)
+            ).distinct()
+            return render(request, 'trainer/search.html', {
+
                 'events': event_results,
-                'clients': clients,
+                'webinars':webinar_results,
+                'articles':article_results,
+                'elearnings':elearning_results,
+                'olocations':olocation_results,
+
             })
         else:
-            return render(request, 'trainer/index.html', {'trainers': trainers, 'clients': clients})
-
-
+            raise Http404
 
 
 

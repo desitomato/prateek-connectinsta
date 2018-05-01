@@ -14,9 +14,17 @@
     <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>{% endcomment %}
 
     <script src="{% static 'trainer/js/main.js' %}"></script>
-<script src="{% static 'trainer/js/country_state.js' %}"></script>ru
+<script src="{% static 'trainer/js/country_state.js' %}"></script>
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=1420144641385151&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
 
@@ -40,7 +48,7 @@
                 <li class="{% block elearnings_active %}{% endblock %}"><a href="{% url 'trainer:elearnings' 'all' %}"><span class="" aria-hidden="true"></span>&nbsp; E-Learning</a></li>
                 <li class="{% block olocations_active %}{% endblock %}"><a href="{% url 'trainer:olocations' 'all' %}"><span class="" aria-hidden="true"></span>&nbsp; Outbound Location</a></li>
             </ul>
-            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'trainer:index' %}">
+            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'trainer:searchview' %}">
                 <div class="form-group">
                     <input type="text" class="form-control" name="q" value="{{ request.GET.q }}">
                 </div>
