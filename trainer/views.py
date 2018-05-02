@@ -100,6 +100,7 @@ def create_event(request, trainer_id):
     form = EventForm(request.POST or None, request.FILES or None)
     trainer = get_object_or_404(Trainer, pk=trainer_id)
     event_email = request.user.email
+
     if form.is_valid():
         trainers_events = trainer.event_set.all()
         for s in trainers_events:
@@ -110,6 +111,7 @@ def create_event(request, trainer_id):
                     'error_message': 'You already added that event',
                 }
                 return render(request, 'trainer/create_event.html', context)
+
         event = form.save(commit=False)
         event.trainer = trainer
         event.epicture = request.FILES['epicture']
@@ -123,6 +125,7 @@ def create_event(request, trainer_id):
             }
             return render(request, 'trainer/create_event.html', context)
 
+
         event.save()
         messages.success(request, "Successfully created event")
         send_mail('Connectinsta - New Event Created', 'congratulations', 'er.prateek.9045@gmail.com', [event_email], fail_silently=False)
@@ -134,8 +137,6 @@ def create_event(request, trainer_id):
         'form': form,
     }
     return render(request, 'trainer/create_event.html', context)
-
-
 
 
 

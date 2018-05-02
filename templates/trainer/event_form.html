@@ -12,6 +12,10 @@
                         {% csrf_token %}
                         {% include 'trainer/form_template.html' %}
                         <div class="form-group">
+                            <label>Select Country
+                            <select id="country" name="country"></select></label>
+                            <label>Select State
+                            <select id="state" name="state"></select></label>
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-success">Submit</button>
                             </div>

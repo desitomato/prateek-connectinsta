@@ -6,7 +6,8 @@ from django.contrib.contenttypes.fields import GenericRelation
 from hitcount.models import HitCount, HitCountMixin
 
 
-
+def upload_location(user, filename):
+    return "%s/%s" %(user.trainer_id, filename)
 
 
 class Trainer(models.Model, HitCountMixin):
@@ -37,7 +38,7 @@ class Trainer(models.Model, HitCountMixin):
     )
     category = models.CharField(max_length=100, null=True, verbose_name='Category', choices=TCATEGORY_CHOICES, default='', blank=False)
     country = CountryField(blank_label='(select country)', null=True)
-    picture = models.FileField(verbose_name='Upload Image', blank=True)
+    picture = models.ImageField(verbose_name='Upload Image', upload_to=upload_location, null=True, blank=True)
     joindate = models.DateTimeField(auto_now=True, blank=False)
     is_favorite = models.BooleanField(default=False)
     hit_count_generic = GenericRelation(
@@ -173,8 +174,10 @@ class Event(models.Model):
     elocation = models.CharField(max_length=250, verbose_name='Location', blank=False)
     efacebook = models.CharField(max_length=300, verbose_name='Facebook Link',default='')
     ewebsite = models.CharField(max_length=300, verbose_name='Website Link',default='')
-    epicture = models.FileField(verbose_name='Upload Image', blank=False)
+    epicture = models.ImageField(verbose_name='Upload Image', upload_to=upload_location, null=True, blank=True)
     epublish = models.DateTimeField(auto_now=True, blank=False)
+    ecountry = models.CharField(max_length=250, verbose_name='Country', blank=False,  default=0)
+    estate = models.CharField(max_length=250, verbose_name='State', blank=False,  default=0)
     is_favorite = models.BooleanField(default=False)
 
 
